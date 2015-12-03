@@ -1,0 +1,24 @@
+<% if !logged_in? %>
+  <div id="sign">
+    <div class="block info">
+
+        <p> 
+          To post or comment, please <%= link_to "sign in", "#", id: "sign-in-link" %>
+          or <%= link_to "sign up", "#", id: "sign-up-link"%>. 
+        </p>
+    </div>  
+    
+      <div class="block" id="up">
+        <%= render partial: 'sign_up' %>
+      </div>
+      <div class="block" id="in">
+        <%= render partial: 'sign_in' %>
+      </div>
+    
+      <div class="block">
+      </div>
+      
+  
+  </div>
+<% else %>
+<% end %>

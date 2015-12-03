@@ -1,0 +1,20 @@
+<div class="comment" id="comment-<%= comment.id %>">
+  <div class="content">
+    <%= link_to comment.user.name, user_path(comment.user) %>
+    <span class="small">created <%= time_ago_in_words(comment.created_at)%> ago</span>
+    <p> <%= comment.content %> </p>
+    <span class="new-reply-link">reply</span>
+    
+    <div class="reply-form" >
+      <%= form_for @reply, :url => url_for(controller: "comments", action: "create" ), remote: true do |f| %>
+        <%= f.text_area :content %><br>
+        <%= f.hidden_field :parent_id, value: comment.id %>
+        <%= f.submit "POST", class:'btn-2' %>
+      <% end %> 
+    </div>
+  </div>
+  
+  <% comment.replies.each do |reply|%>
+    <%= render partial: 'comment', locals: { comment: reply } %>
+  <% end %>
+</div>

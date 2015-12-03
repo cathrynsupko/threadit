@@ -1,0 +1,4 @@
+$('#comments-<%= @comment.post_id %>')
+    .prepend('<%= escape_javascript(render partial: "posts/comment", locals:{ comment: @comment }) %>');
+
+$('textarea').val("");

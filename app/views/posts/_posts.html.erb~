@@ -1,0 +1,16 @@
+
+  <div class="post">
+    <%= render partial: 'vote', locals:{ post: post } %>
+    
+    <div class="title">
+      <%= link_to post.title, post_path(post), class:"title-link"%> <br>
+      <% if post.author %>
+        <span class="small">created by <%= link_to post.author.name, '#' %> 
+        <%= time_ago_in_words(post.created_at) %> ago</span><br>
+      <% end %>
+    </div>
+ 
+  </div>
+
+
+

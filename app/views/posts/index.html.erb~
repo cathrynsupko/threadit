@@ -1,0 +1,30 @@
+<div class="left">
+  <%= link_to "sign out", logout_path, method: :delete %>
+  <%= current_user.name if current_user%>
+</div>
+
+<div class="center">
+  
+  
+    <div class="tabs">
+      <div class="btn">
+        <%= button_to "CREATE NEW POST", new_post_path, method: :get  %>
+      </div>
+      <div class="tab" id="popular">
+       <%= link_to "POPULAR", popular_posts_path, remote: true, id: "popular-link" %>
+      </div>
+      <div class="tab active" id="recent">
+       <%= link_to "RECENT", recent_posts_path, remote: true, id:"recent-link" %>
+      </div>
+    </div>
+    
+    <div class="posts" id="posts">
+      <%= render partial: 'posts', collection: @recent, as: :post %>
+    </div>
+  
+  
+</div>
+
+<div class="right">
+  <%= render partial: 'right_sidebar' %>
+</div>

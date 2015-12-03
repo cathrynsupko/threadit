@@ -1,0 +1,2 @@
+$('#posts')
+  .html("<%= escape_javascript(render(partial: 'posts', collection: @popular, as: :post)) %>")

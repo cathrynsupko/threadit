@@ -1,0 +1,18 @@
+
+<% if @comment.post_id %>
+  $('#comments-<%= @comment.post_id %> ')
+    .prepend('<div class="level-0"><%= escape_javascript(render partial: "posts/comment", locals: { comment: @comment }) %></div>');
+<% end %>
+
+<% if @comment.parent_id %>
+  $('#comment-<%= @comment.parent_id %>')
+    .append('<%= escape_javascript(render partial: "posts/comment", locals: { comment: @comment }) %>');
+  $('#link-<%= @comment.parent_id %>').next().toggle();
+<% end %>
+
+$('#link-<%= @comment.id%>').on('click', function(){
+    $(this).next().toggle();
+});
+$('textarea').val('');
+$('form').reset();
+

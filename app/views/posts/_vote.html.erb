@@ -1,0 +1,9 @@
+<div class="vote">
+  <%= link_to upvote_post_path(post), remote: true, method: :post do %>
+   <i class="material-icons">arrow_drop_up</i><br>
+  <% end %>
+  <span id="vote-<%= post.id%>"><%= post.votes %></span><br>
+  <%= link_to downvote_post_path(post), remote: true, method: :post do %>
+    <i class="material-icons">arrow_drop_down</i>
+  <% end %>
+</div>

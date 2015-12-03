@@ -1,0 +1,21 @@
+<div class="top">
+  <div class="show">
+    <h1><%= @user.name %></h1>
+    <span class="small">member for <%= time_ago_in_words(@user.created_at) %></span><br>
+    <% if @user == current_user %>
+      <span class="small">
+        <%= link_to "Delete account", user_path(@user), method: :delete %>
+      </span>
+    <% end %>
+  </div>
+</div>
+
+<div class="bottom">
+  
+  <div class="show">
+    <h2><%= @user.name %>'s posts </h2>
+      <div class="posts" id="posts">
+        <%= render partial: 'posts/posts', collection: @posts, as: :post %>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="top">
+  
+ 
+
+  <div class="show">
+     <%= render partial: 'vote', locals: { post: @post } %>
+    <h3><%= @post.title %></h3> <br>
+    <% if @post.author %>
+      <span class="small">  
+        created by <%= link_to @post.author.name, '#' %> 
+        <%= time_ago_in_words(@post.created_at) %> ago 
+      </span><br>
+    <% end %> 
+    
+    <% if @post.author == current_user %>
+      <span class="small">
+        <%= link_to "Edit post", edit_post_path(@post) %> | 
+        <%= link_to "Delete post", post_path(@post), method: :delete %>
+      </span>
+    <% end %>
+    <p><%= @post.body %></p>
+  </div>
+  
+  
+</div>
+        
+      
+  
+  
+</div>
+
+<div class="bottom">
+  
+        <div class="comment-container">
+         
+            <h3>All comments</h3>
+     
+          
+          <div class="new-comment">
+            <%= form_for @comment, :url => url_for(controller: "comments", action: "create" ), remote: true do |f| %>
+              <%= f.text_area :content %><br>
+              <%= f.hidden_field :post_id, value: @post.id %>
+              <%= f.submit "POST", class:'btn-2' %>
+            <% end %>          
+          </div>
+          <div id="comments-<%= @post.id %>">
+            <% if !@comments.nil? %>
+              <% @comments.each do |comment|%>
+                <div class="level-0">
+                  <%= render partial: "comment", locals: { comment: comment } %>
+               </div>
+              
+              <% end %>
+            
+            <% end %>
+          </div>
+         
+        </div>
+      
+ </div>
+
+

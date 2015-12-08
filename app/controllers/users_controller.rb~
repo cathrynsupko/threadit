@@ -12,6 +12,13 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts
+  end
+  
+  def destroy
+    User.find_by(id: params[:id]).destroy
+    log_out
+    redirect_to posts_path
   end
   
   

@@ -1,1 +1,3 @@
 a reddit-inspired forum
+
+see this project in action at http://threadit.herokuapp.com/

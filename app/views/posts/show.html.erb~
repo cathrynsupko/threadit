@@ -7,7 +7,7 @@
     <h3><%= @post.title %></h3> <br>
     <% if @post.author %>
       <span class="small">  
-        created by <%= link_to @post.author.name, '#' %> 
+        created by <%= link_to @post.author.name, user_path(@post.author) %> 
         <%= time_ago_in_words(@post.created_at) %> ago 
       </span><br>
     <% end %> 

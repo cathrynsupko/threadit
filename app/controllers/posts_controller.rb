@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :must_log_in, only: [:new, :create, :edit, :update, :destroy]
-  
+ 
   
   def index
     @recent = Post.all.order('created_at DESC')
@@ -36,12 +36,14 @@ class PostsController < ApplicationController
   end
   
   def edit
+    
     @post = Post.find_by(id: params[:id])
-    redirect_to @post unless @post.author == current_user
+    must_be_author(@post)
   end
   
   def update
     @post = Post.find_by(id: params[:id])
+    must_be_author(@post)
     if @post.update_attributes(post_params)
       redirect_to @post
     else

@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in(@user)
       redirect_to @user
+      flash[:notice] = "Your sign up was successful!"
     else
       redirect_to posts_path
     end
@@ -18,6 +19,7 @@ class UsersController < ApplicationController
   
   def destroy
     User.find_by(id: params[:id]).destroy
+    flash[:notice] = "User was successfully deleted"
     log_out
     redirect_to posts_path
   end

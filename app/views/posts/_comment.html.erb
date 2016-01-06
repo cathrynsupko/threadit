@@ -18,10 +18,10 @@
     <%= link_to dislike_comment_path(comment), remote: true, method: :post do %>
       <i class="material-icons">thumb_down</i>
     <% end %> 
-    <span id="dislikes-<%= comment.id %>" class="small"><%= pluralize(comment.dislikes, 'dislikes') %></span> |
-    
-    <span class="reply-link small" id="link-<%= comment.id %>">  reply</span>
-    
+    <span id="dislikes-<%= comment.id %>" class="small"><%= pluralize(comment.dislikes, 'dislikes') %></span> 
+    <% if logged_in? %>
+      <span class="reply-link small" id="link-<%= comment.id %>"> | reply</span>
+    <% end %>
     <div class="reply-form" >
       <%= form_for @reply, :url => url_for(controller: "comments", action: "create" ), remote: true do |f| %>
         <%= f.text_area :content %><br>

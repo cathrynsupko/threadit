@@ -18,7 +18,7 @@
  header{
    width: 100vw;
    height: 50px;
-   background-color: #ffffff;
+   background-color: #fff;
    box-shadow: 0 0 2px 2px #eee;
    position:fixed;
    top:0;
@@ -31,3 +31,25 @@
    display:inline;
    margin-right: 30px;
  }
+ 
+.notice{
+  text-align: center;
+  padding: 10px;
+  border: 3px solid #00C853;
+  color: #00C853;
+  background-color: #B9F6CA;
+  width: 500px;
+  margin: 0 auto;
+  margin-top: 60px;
+}
+
+.alert{
+  text-align: center;
+  padding: 10px;
+  border: 3px solid #F44336;
+  color: #F44336;
+  background-color: #FFEBEE;
+  width: 500px;
+  margin: 0 auto;
+  margin-top: 60px;
+}
